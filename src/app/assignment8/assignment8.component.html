@@ -1,0 +1,21 @@
+<p>assignment8 works!________________________________________________________________________________________________________________________</p>
+<h1>Q1)</h1>
+<app-child (MyEvent)="Message=$event"></app-child>
+<h3>Parent reads Message : {{Message}}</h3>
+
+
+<h1>Q2)</h1>
+<app-child2 [parentData]="Message3" (MyEvent2)="Message2=$event"></app-child2>
+<h3>C to P: {{Message2}}</h3>
+
+
+<h1>Q3)</h1>
+<h3>with [(ngModel)]</h3>
+<input [(ngModel)]="appData" type="text">
+<h3>Text length: {{appData.length}}</h3>
+
+
+<h1>Q4)</h1>
+<h3>without [(ngModel)]</h3>
+<input (keypress)="textLength($event)" type="text">
+<h3>Text length: {{dataLength}}</h3>
