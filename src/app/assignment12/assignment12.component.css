@@ -1,0 +1,29 @@
+.required::after {
+    content: "*";
+    color: red;
+}
+
+.formDemo{
+    padding: 40px;
+    align-content: center;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+}
+
+.contact-our{
+    color: darkmagenta;
+}
+
+.img{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.heading{
+    text-align: center;
+}

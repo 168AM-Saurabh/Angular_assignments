@@ -1,0 +1,20 @@
+.topnav{
+    overflow: hidden;
+    background-color: navajowhite;
+}
+
+.topnav a{
+    color: black;
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 30px;
+}
+
+.topnav a.active{
+    background-color: coral;
+    color: darkblue;
+}
+
+.topnav a:hover{
+    color: brown;
+}
