@@ -15,35 +15,68 @@
 </div>
 
 
-<form class="formDemo">
+<form [formGroup]="formDemo">
     <div class="row">
-      <div class="required" for="name">Name</div>
-       <div class="col">
-        <input type="text" for="first-name" class="form-control" aria-label="First name" required>
-        <label for="first-name" class="form-label">First Name</label>
-      </div>
-      <div class="col">
-        <input type="text" for="last-name" class="form-control" aria-label="Last name" required>
-        <label for="last-name" class="form-label">Last Name</label>
-      </div>
+        <div class="required" for="name">Name</div>
+            <div class="col">
+               <input type="text" for="firstname" class="form-control" aria-label="First name" [class.is-invalid] = "formDemo.get('firstname')?.invalid && formDemo.get('firstname')?.touched" formControlName="firstname">
+               <label for="firstname" [class.d-none]="formDemo.get('firstname')?.valid" class="text-danger">First name should contain only alphabets</label>
+            </div>
+            
+            <div class="col">
+                <input type="text" for="lastname" class="form-control" aria-label="Last name" [class.is-invalid] = "formDemo.get('lastname')?.invalid && formDemo.get('lastname')?.touched" formControlName="lastname">
+                <label for="lastname" [class.d-none]="formDemo.get('lastname')?.valid" class="text-danger">Last name should contain only alphabets</label>
+            </div>
     </div>
     <br>
 
-     <div class="row">
+    <div class="row">
       <div class="required" for="email">Email address</div>
-      <input type="email" for="email" class="form-control" id="exampleFormControlInput1" required>
-    </div>
-    <br>
-
-     <div class="row">
-      <div class="required" for="phone">Phone number</div>
-      <input type="text" for="phone" class="form-control" aria-label="Phone number" required>
+      <input type="email" placeholder="example@d.in" for="email" class="form-control" [class.is-invalid] = "formDemo.get('email')?.invalid && formDemo.get('email')?.touched" formControlName="email" >
+        <label for="email" [class.d-none]="formDemo.get('email')?.valid" class="text-danger">Email should be alphanumeric, contain minimum 1 letter after "&#64;" and 2 letters after "." </label>
     </div>
     <br>
 
     <div class="row">
-      <div class="required" for="address">Address</div>
-      <textarea class="form-control" for="address" rows="3" required></textarea>
+      <div class="required" for="phone">Phone number</div>
+      <input type="text" for="phone" class="form-control" aria-label="Phone number" [class.is-invalid] = "formDemo.get('phone')?.invalid && formDemo.get('phone')?.touched" formControlName="phone" >
+        <label for="phone" [class.d-none]="formDemo.get('phone')?.valid" class="text-danger">Phone should be numeric and contains 10 digits</label>
     </div>
-</form>
+    <br>
 
+    <div class="row">
+        <div class="col">
+            <div class="required" for="city">City</div>
+            <input type="text" for="city" class="form-control" aria-label="city" [class.is-invalid] = "formDemo.get('city')?.invalid && formDemo.get('city')?.touched" formControlName="city">
+            <label for="city" [class.d-none]="formDemo.get('city')?.valid" class="text-danger">City name should contain minimum 4 alphabets</label>
+        </div>
+        <div class="col">
+            <div for="state">State</div>
+<!--            <input type="text" for="state" class="form-control" aria-label="state" [class.is-invalid] = "formDemo.get('state')?.invalid" formControlName="state">-->
+<!--            <label for="state" [class.d-none]="formDemo.get('state')?.valid" class="text-danger">State name should contain only alphabets</label>-->
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Select state</option>
+              <option value="1">Maharashtra</option>
+              <option value="2">Gujrat</option>
+              <option value="3">Uttar Pradesh</option>
+            </select>
+        </div>
+        <div class="col">
+            <div for="zipcode">Zip-code</div>
+            <input type="text" for="zipcode" class="form-control" aria-label="zipcode" [class.is-invalid] = "formDemo.get('zipcode')?.invalid && formDemo.get('zipcode')?.touched" formControlName="zipcode">
+            <label for="zipcode" [class.d-none]="formDemo.get('zipcode')?.valid" class="text-danger">Zip code should contain 5 digits</label>
+        </div>
+        
+    </div>
+    <br>
+    
+    <div class="row">
+      <div for="comments">Comments</div>
+      <input type="text" for="comments" class="form-control" aria-label="comments" [class.is-invalid] = "formDemo.get('comments')?.invalid && formDemo.get('comments')?.touched" formControlName="comments" >
+        <label for="comments" [class.d-none]="formDemo.get('comments')?.valid" class="text-danger">Comments should contain minimum 30 characters</label>
+    </div>
+    <br>
+    <button type="submit" [disabled]=formDemo.invalid class="btn btn-primary" style="align-content: center">Submit Form</button>
+  
+    
+</form>
